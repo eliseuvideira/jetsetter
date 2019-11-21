@@ -1,4 +1,7 @@
 import { app, BrowserWindow } from 'electron';
+import { enableLiveReload } from 'electron-compile';
+
+enableLiveReload({ strategy: 'react-hmr' });
 
 /** @type {Electron.BrowserWindow | null} */
 let browserWindow = null;
