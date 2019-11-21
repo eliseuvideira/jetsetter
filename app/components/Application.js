@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Items from './Items';
+import NewItem from './NewItem';
 
 class Application extends Component {
   constructor(props) {
@@ -12,7 +13,10 @@ class Application extends Component {
     this.markAllAsUnpacked = this.markAllAsUnpacked.bind(this);
   }
 
-  addItem(item) {}
+  addItem(item) {
+    const otherItems = this.state.items.filter((i) => i.id !== item.id);
+    this.setState({ items: otherItems.concat(item) });
+  }
 
   markAsPacked(item) {
     const otherItems = this.state.items.filter((other) => other.id !== item.id);
@@ -28,7 +32,6 @@ class Application extends Component {
     const items = this.state.items.map((item) =>
       Object.assign({}, item, { packed: false }),
     );
-    // const items = this.state.items.map((item) => ({ ...item, packed: false }));
     this.setState({ items });
   }
 
@@ -40,6 +43,7 @@ class Application extends Component {
     console.log({ packedItems, unpackedItems });
     return (
       <div className="Application">
+        <NewItem onSubmit={this.addItem} />
         <Items
           title="Unpacked Items"
           items={unpackedItems}
