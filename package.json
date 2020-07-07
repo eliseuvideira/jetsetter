@@ -5,7 +5,7 @@
   "author": "Eliseu Videira <eliseuvideira1@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "electron": "1",
+    "electron": "9",
     "electron-prebuilt-compile": "1",
     "prop-types": "15",
     "react": "16",
